@@ -1,0 +1,13 @@
+server:
+  port: 6060
+  tomcat:
+    uri-encoding: UTF-8
+  servlet:
+    context-path: /taos-service
+spring:
+  application:
+    name: taos-service
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB

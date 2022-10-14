@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    driver-class-name: com.taosdata.jdbc.rs.RestfulDriver
+    url: jdbc:TAOS-RS://${ztjz.datasource.taosdata.ip}
+    username: ${ztjz.datasource.taosdata.username}
+    password: ${ztjz.datasource.taosdata.password}
+    druid:
+      initial-size: 5
+      min-idle: 5
+      max-active: 5
+      max-wait: 30000
+      validation-query: select server_status();
+      # 阿里的Druid连接池只支持阿里自主研发的数据库 不支持其他的国产数据库,需要去除防火墙过滤
+      filters: config,stat
+      aop:
+        auto: true
+        proxy-target-class: true
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
+logging:
+  level:
+    cn.itzixiao.taos.dao: debug
